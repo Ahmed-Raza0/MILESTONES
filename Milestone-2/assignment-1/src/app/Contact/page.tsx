@@ -85,7 +85,7 @@ export default function Contact() {
                     required
                     title="Enter your message here"
                     placeholder="Enter your message here"
-                    className={styles.inputField}
+                    className={styles.inputFieldMsg}
                   />
                   <input
                     type="submit"

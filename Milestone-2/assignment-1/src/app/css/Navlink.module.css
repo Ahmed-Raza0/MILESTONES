@@ -39,7 +39,7 @@
     height: 1.5rem;  
   }
   
-  .link-name {
+  .linkname {
     display: none; 
   }
   
@@ -47,6 +47,7 @@
     .linkname {
       display: block;
       font-size: 0.875rem; 
+      
     }
   }
   
