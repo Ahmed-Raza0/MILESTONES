@@ -1,0 +1,53 @@
+.nav {
+    background-color: #475569; 
+    color: white;
+    padding: 1rem 1.40rem; 
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .title {
+    color: white;
+    font-size: 1.125rem;
+    font-weight: bold; 
+    margin-left: 1rem;  
+  }
+  
+  .links {
+    display: flex;
+    gap: 1.5rem;  
+  }
+  
+  .link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;  
+    transition: color 0.2s ease-in-out; 
+  }
+  
+  .link:hover {
+    color: #d1d5db; 
+  }
+  
+  .icon {
+    width: 1.5rem; 
+    height: 1.5rem;  
+  }
+  
+  .linkname {
+    display: none; 
+  }
+  
+  @media (min-width: 768px) {
+    .linkname {
+      display: block;
+      font-size: 0.875rem; 
+      
+    }
+  }
+  
