@@ -1,4 +1,3 @@
-'Use client'
 import {
     EnvelopeIcon,
     HomeIcon,
