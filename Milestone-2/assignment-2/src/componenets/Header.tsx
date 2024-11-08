@@ -34,9 +34,9 @@ const Header = () => {
           <ul
             className={`flex-col list-none bg-black fixed right-0 top-0 left-[50%] lg:left-[80%] mx-auto p-2 rounded-md transition-transform z-50 duration-300 ease-in-out lg:flex lg:static lg:flex-row lg:bg-transparent lg:p-0 ${menuOpen ? "flex" : "hidden lg:flex"}`}
           >
-            <li className="w-full text-right pr-10 mt-4 lg:hidden">
+            <li className="w-full text-right text-white pr-10 mt-4 lg:hidden">
               <MdOutlineCancel
-                className="text-3xl cursor-pointer float-right"
+                className="text-3xl cursor-pointer  float-right"
                 onClick={toggleMenu}
                 aria-label="Close menu"
               />
