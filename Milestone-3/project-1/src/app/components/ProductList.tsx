@@ -5,27 +5,39 @@ async function fetchProductList() {
   if (!response.ok) {
     throw new Error("Failed to fetch products");
   }
-  return await response.json();
+  const data = await response.json();
+  return data; // Return the array of products directly
+}
+
+interface Product {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  category: string;
+  image: string;
+  rating: {
+    rate: number;
+    count: number;
+  };
 }
 
 export default async function ProductList() {
   const products = await fetchProductList();
 
   return (
-    <>
-      <div className="container mx-auto p-4">
-        <h1 className="text-4xl font-bold text-center mb-8">Product List</h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {products.map((product: any) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
+    <div className="container mx-auto h-screen p-4">
+      <h1 className="text-4xl font-bold text-center mb-8">Product List</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {products.map((product: Product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
       </div>
-    </>
+    </div>
   );
 }
 
-function ProductCard({ product }: { product: any }) {
+function ProductCard({ product }: { product: Product }) {
   const maxDescriptionLength = 100;
   const description =
     product.description.length > maxDescriptionLength
@@ -44,9 +56,12 @@ function ProductCard({ product }: { product: any }) {
         ${product.price.toFixed(2)}
       </p>
       <p className="text-gray-700 mb-4">{description}</p>
-      <Link href={`./products/${product.id}`} className="mt-4 w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition-colors duration-200 border border-blue-500">
-    Add to Cart
-</Link>
+      <Link
+        href={`/products/${product.id}`} // Ensure proper dynamic URL
+        className="mt-4 w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition-colors duration-200 border border-blue-500"
+      >
+        Add to Cart
+      </Link>
     </div>
   );
 }

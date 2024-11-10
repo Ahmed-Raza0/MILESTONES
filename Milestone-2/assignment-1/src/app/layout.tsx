@@ -1,4 +1,4 @@
-import NavLinks from "./components/nav-link";
+import Header from "./components/Header";
 import "./globals.css";
 
 export default function RootLayout({
@@ -9,7 +9,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <NavLinks />
+        <Header />
         {children}
       </body>
     </html>

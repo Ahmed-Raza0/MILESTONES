@@ -1,6 +1,6 @@
 import { EnvelopeIcon, HomeIcon, PhoneIcon, BriefcaseIcon } from '@heroicons/react/24/outline';
 import Link from "next/link";
-import styles from '@/app/css/Contact.module.css'; 
+import styles from './Contact.module.css'; 
 
 export const metadata = {
   title: "Contact Page",

@@ -1,6 +1,6 @@
 import { UserGroupIcon, HomeIcon, DocumentDuplicateIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import styles from '@/app/css/Navlink.module.css'; // Adjust the path as necessary
+import styles from './Header.module.css'; // Adjust the path as necessary
 
 const links = [
   { name: 'Home', href: '/', icon: HomeIcon },
@@ -8,7 +8,7 @@ const links = [
   { name: 'Contact', href: '/Contact', icon: DocumentDuplicateIcon },   
 ];
 
-export default function NavLinks() {
+export default function  Header() {
   return (
     <nav className={styles.nav}>
       <h1 className={styles.title}>Portfolio</h1> 
