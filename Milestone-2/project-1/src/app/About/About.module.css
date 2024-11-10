@@ -1,0 +1,92 @@
+ /* Body container */
+.body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 4rem;
+  background: linear-gradient(135deg, #eaf2f8, #ffffff); /* Subtle gradient background */
+}
+
+/* Container holding the card */
+.container {
+  width: 100%;
+  max-width: 960px;
+  padding: 1.5rem;
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+/* Heading styling */
+.h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #00796b; /* Deep teal color for a professional yet vibrant look */
+  margin-bottom: 2rem;
+  letter-spacing: 1px;
+}
+
+/* Content styling (image + text) */
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Profile image styling */
+.img {
+  border-radius: 50%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Soft shadow around the image */
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border: 5px solid #FF6F61; /* Coral border around the image */
+}
+
+/* Body text styling */
+.text {
+  color: #333; /* Dark gray for clear text */
+  font-size: 1.2rem;
+  font-weight: 400;
+  font-style: italic;
+  text-align: left;
+  line-height: 1.75rem;
+  max-width: 600px;
+  padding: 0 1rem; /* Padding on sides for better spacing */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .h1 {
+    font-size: 2rem; /* Smaller heading on mobile */
+  }
+
+  .content {
+    flex-direction: column; /* Stack content vertically on smaller screens */
+    text-align: center;
+  }
+
+  .img {
+    width: 250px;
+    height: 250px;
+  }
+
+  .text {
+    font-size: 1rem;
+    text-align: center; /* Center text on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .text {
+    font-size: 0.95rem; /* Adjust font size for very small screens */
+  }
+}
