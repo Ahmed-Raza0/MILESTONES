@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useCart } from "../../context/CartContext";
+import Image from "next/image";
 
 interface Product {
   id: number;
@@ -46,14 +47,16 @@ export default function Carddetails({ params }: { params: { id: string } }) {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-4xl font-bold text-center mb-8">{product.title}</h1>
-      <img
+      <Image
         src={product.image}
         alt={product.title}
+        width={300}
+        height={300}
         className="w-fit h-96 object-cover mx-auto rounded mb-4"
       />
       <p className="text-lg text-center mb-4">${product.price.toFixed(2)}</p>
       <button
-        onClick={() => addToCart(product)} // Add to cart logic here
+        onClick={() => addToCart(product)}
         className="text-white border border-blue-400 p-3 bg-blue-500 hover:bg-blue-600 rounded-lg w-full text-center font-semibold mb-4 transition duration-300 ease-in-out"
       >
         Add to Cart

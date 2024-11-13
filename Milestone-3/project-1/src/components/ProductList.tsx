@@ -23,7 +23,14 @@ async function fetchProductList() {
 }
 
 export default async function ProductList() {
-  const products = await fetchProductList();
+  let products: Product[] = [];
+
+  try {
+    products = await fetchProductList();
+  } catch (error) {
+    console.error(error);
+     
+  }
 
   return (
     <>
@@ -32,14 +39,21 @@ export default async function ProductList() {
           Our Products
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-          {products.map((product: Product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+          {products.length > 0 ? (
+            products.map((product: Product) => (
+              <ProductCard key={product.id} product={product} />
+            ))
+          ) : (
+            <div className="col-span-full text-center text-xl text-red-500">
+              No products found.
+            </div>
+          )}
         </div>
       </div>
     </>
   );
 }
+
 function ProductCard({ product }: { product: Product }) {
   const maxDescriptionLength = 120;
   const description =
@@ -48,7 +62,7 @@ function ProductCard({ product }: { product: Product }) {
       : product.description;
 
   return (
-    <div className="bg-white rounded-lg shadow-xl overflow-hidden group transform hover:scale-105 transition-all duration-300 ease-in-out">
+    <div className="bg-white rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300 ease-in-out group">
       <div className="relative">
         <Image
           src={product.image}
@@ -68,7 +82,7 @@ function ProductCard({ product }: { product: Product }) {
           <p className="text-xl font-bold text-green-500">${product.price.toFixed(2)}</p>
           <div className="text-yellow-400 flex items-center">
             <span className="mr-1">{product.rating.rate}</span>
-            <span>&#9733;</span>
+            <span>&#9734;</span>
           </div>
         </div>
         <Link
