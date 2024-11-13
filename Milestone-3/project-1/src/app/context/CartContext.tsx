@@ -1,6 +1,6 @@
-// /context/CartContext.tsx
-'use client';
-import React, { createContext, useState, useContext } from 'react';
+"use client";
+
+import React, { createContext, useContext, useState } from "react";
 
 interface Product {
   id: number;
@@ -17,8 +17,9 @@ interface Product {
 
 interface CartContextType {
   cart: Product[];
-  setCart: React.Dispatch<React.SetStateAction<Product[]>>;
-  handleAddToCart: (product: Product) => void;
+  addToCart: (product: Product) => void;
+  removeFromCart: (productId: number) => void;
+  clearCart: () => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -26,16 +27,22 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const [cart, setCart] = useState<Product[]>([]);
 
-  const handleAddToCart = (product: Product) => {
-    setCart((prevCart) => {
-      const updatedCart = [...prevCart, product];
-      localStorage.setItem('cart', JSON.stringify(updatedCart));
-      return updatedCart;
-    });
+  const addToCart = (product: Product) => {
+    setCart((prevCart) => [...prevCart, product]);
+  };
+
+  const removeFromCart = (productId: number) => {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
+  };
+
+  const clearCart = () => {
+    setCart([]);
   };
 
   return (
-    <CartContext.Provider value={{ cart, setCart, handleAddToCart }}>
+    <CartContext.Provider
+      value={{ cart, addToCart, removeFromCart, clearCart }}
+    >
       {children}
     </CartContext.Provider>
   );
@@ -44,7 +51,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
 export const useCart = () => {
   const context = useContext(CartContext);
   if (!context) {
-    throw new Error('useCart must be used within a CartProvider');
+    throw new Error("useCart must be used within a CartProvider");
   }
   return context;
 };
