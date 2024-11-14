@@ -1,42 +1,32 @@
- 'use client';
+ // app/blog/page.tsx
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import supabase from '@/utils/supabase/supabase';
+"use client"; // Since you're using hooks like useState
 
-export default function Blog() {
-  const [posts, setPosts] = useState<any[] | null>([]);
+import { useState } from "react";
 
-  useEffect(() => {
-    async function fetchPosts() {
-      const { data } = await supabase.from('posts').select('*');
-      setPosts(data);
-    }
-    fetchPosts();
-  }, []);
+// Mock blog posts
+const mockBlogPosts = [
+  { id: 1, title: "First Blog Post", content: "This is the content of the first post." },
+  { id: 2, title: "Second Blog Post", content: "This is the content of the second post." },
+];export default function BlogList() {
+  const [blogs, setBlogs] = useState(mockBlogPosts);
+
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-6 text-center">Blog</h1>
-      <div className="text-center mb-6">
-        <Link href="/blog/create" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          Create New Post
-        </Link>
-      </div>
-      {posts && posts.length > 0 ? (
-  posts.map((post) => (
-    <li key={post.id} className="border p-4 rounded-lg shadow-md">
-      <h2 className="text-2xl font-semibold mb-2">{post.title}</h2>
-      <p className="text-gray-700 mb-4">{post.content}</p>
-      <Link href={`/blog/${post.id}`} className="text-blue-500 hover:underline">
-        Edit
-      </Link>
-    </li>
-  ))
-) : (
-  <p>No posts available.</p>
-)}
-
+    <div className="container mx-auto p-4">
+      <h1 className="text-3xl font-bold mb-4">Blog Posts</h1>
+      {blogs.length === 0 ? (
+        <p className="text-gray-600">No posts available yet.</p>
+      ) : (
+        <ul className="space-y-4">
+          {blogs.map((blog) => (
+            <li key={blog.id} className="p-4 border border-gray-300 rounded-md">
+              <h2 className="text-xl font-bold">{blog.title}</h2>
+              <p>{blog.content}</p>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
