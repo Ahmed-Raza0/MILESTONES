@@ -56,7 +56,10 @@ export default function Carddetails({ params }: { params: { id: string } }) {
       />
       <p className="text-lg text-center mb-4">${product.price.toFixed(2)}</p>
       <button
-        onClick={() => addToCart(product)}
+        onClick={() => {
+          addToCart(product);
+          alert('Cart add successfully');
+        }}
         className="text-white border border-blue-400 p-3 bg-blue-500 hover:bg-blue-600 rounded-lg w-full text-center font-semibold mb-4 transition duration-300 ease-in-out"
       >
         Add to Cart
