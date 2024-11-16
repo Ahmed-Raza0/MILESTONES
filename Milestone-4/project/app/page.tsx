@@ -1,4 +1,4 @@
-import PageFooter from "@/components/PageFooter";
+import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Link from "next/link";
 import ProductList from "@/components/Products";
@@ -13,7 +13,7 @@ export default async function Index() {
       <Hero />
       <ProductList/>
       </Link>
-      <PageFooter />
+      <Footer />
     </div>
   );
 }

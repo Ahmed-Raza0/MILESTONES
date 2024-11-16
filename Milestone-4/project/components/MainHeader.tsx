@@ -17,7 +17,7 @@ const HeaderMain = () => {
   };
 
   return (
-    <div className="bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500 border-b border-gray-200 py-6">
+    <div className="bg-gradient-to-r from-indigo-600 border-t-2 via-purple-500 to-pink-500 border-b border-gray-200 py-6">
       <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <div className="font-bold text-3xl sm:text-4xl text-center sm:text-left pb-4 sm:pb-0 text-white">
