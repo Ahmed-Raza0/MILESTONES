@@ -1,14 +1,14 @@
 import PageFooter from "@/components/PageFooter";
-import PageHeader from "@/components/PageHeader";
 import Hero from "@/components/Hero";
 import Link from "next/link";
 import ProductList from "@/components/Products";
+import Header from "@/components/Header";
 
 
 export default async function Index() {
   return (
     <div>
-      <PageHeader/>
+      <Header/>
       <Link href="/sign-in">
       <Hero />
       <ProductList/>
