@@ -8,37 +8,65 @@ import Link from "next/link";
 export default async function Login(props: { searchParams: Promise<Message> }) {
   const searchParams = await props.searchParams;
   return (
-    <form className="flex-1 flex md:mt-[150px] sm:mt-[100px] lg:mt-[200px] flex-col min-w-64">
-      <h1 className="text-2xl font-medium">Sign in</h1>
-      <p className="text-sm text-foreground">
-        Don't have an account?{" "}
-        <Link className="text-foreground font-medium underline" href="/sign-up">
-          Sign up
-        </Link>
-      </p>
-      <div className="flex flex-col gap-2 [&>input]:mb-3 mt-8">
-        <Label htmlFor="email">Email</Label>
-        <Input name="email" placeholder="you@example.com" required />
-        <div className="flex justify-between items-center">
-          <Label htmlFor="password">Password</Label>
-          <Link
-            className="text-xs text-foreground underline"
-            href="/forgot-password"
-          >
-            Forgot Password?
+    <div className="flex items-center justify-center w-full min-h-screen p-4 bg-gradient-to-r from-indigo-600 to-purple-500">
+      <form className="w-full sm:max-w-md bg-white p-8 rounded-xl shadow-xl space-y-6">
+        <h1 className="text-3xl font-semibold text-center text-gray-800">Sign In</h1>
+        <p className="text-sm text-center text-gray-500">
+          Don't have an account?{" "}
+          <Link className="text-indigo-600 font-medium underline" href="/sign-up">
+            Sign up
           </Link>
+        </p>
+
+        {/* Form Fields */}
+        <div className="flex flex-col gap-6 mt-6">
+          <div>
+            <Label htmlFor="email" className="text-lg font-medium text-gray-800">Email</Label>
+            <Input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="you@example.com"
+              required
+              className="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300"
+            />
+          </div>
+          
+          <div>
+            <div className="flex justify-between items-center">
+              <Label htmlFor="password" className="text-lg font-medium text-gray-800">Password</Label>
+              <Link
+                className="text-xs text-indigo-600 underline"
+                href="/forgot-password"
+              >
+                Forgot Password?
+              </Link>
+            </div>
+            <Input
+              id="password"
+              name="password"
+              type="password"
+              placeholder="Your password"
+              required
+              className="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300"
+            />
+          </div>
+
+          {/* Submit Button */}
+          <div className="flex justify-center">
+            <SubmitButton
+              formAction={signInAction}
+              pendingText="Signing In..."
+              className="w-full py-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            >
+              Sign In
+            </SubmitButton>
+          </div>
         </div>
-        <Input
-          type="password"
-          name="password"
-          placeholder="Your password"
-          required
-        />
-        <SubmitButton pendingText="Signing In..." formAction={signInAction}>
-          Sign in
-        </SubmitButton>
+
+        {/* Form Message */}
         <FormMessage message={searchParams} />
-      </div>
-    </form>
+      </form>
+    </div>
   );
 }

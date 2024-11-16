@@ -1,8 +1,9 @@
 "use client";
-
 import React, { useEffect, useState } from "react";
 import { useCart } from "../context/CartContext";
 import Image from "next/image";
+import { toast, ToastContainer } from "react-toastify";  
+import "react-toastify/dist/ReactToastify.css";  
 
 interface Product {
   id: number;
@@ -25,19 +26,22 @@ async function fetchProductById(id: string): Promise<Product> {
   return await response.json();
 }
 
-export default function Carddetails({ params: paramsPromise }: { params: Promise<{ id: string }> }) {
+export default function Carddetails({
+  params: paramsPromise,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const { addToCart } = useCart();
 
-  
   const params = React.use(paramsPromise);
 
   useEffect(() => {
     async function loadProduct() {
       try {
-        const data = await fetchProductById(params.id);  
+        const data = await fetchProductById(params.id);
         setProduct(data);
       } catch (err) {
         setError("Failed to load product.");
@@ -48,35 +52,64 @@ export default function Carddetails({ params: paramsPromise }: { params: Promise
     loadProduct();
   }, [params.id]);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
+  if (loading)
+    return <div className="flex justify-center items-center h-screen">Loading...</div>;
+  if (error)
+    return <div className="flex justify-center items-center h-screen">{error}</div>;
+
+  const handleAddToCart = () => {
+    addToCart(product!);
+    toast.success("Product added to cart successfully!", {
+      position: "top-center",  
+      autoClose: 3000,  
+      hideProgressBar: false, 
+      closeOnClick: true, 
+      pauseOnHover: true,  
+      draggable: true, 
+      progress: undefined,
+    });
+  };
 
   return (
-    <div className="container bg-white mx-auto p-4">
-      <h1 className="text-4xl font-bold text-center mb-8">{product?.title}</h1>
-      <Image
-        src={product?.image ?? ''}
-        alt={product?.title ?? ''}
-        width={300}
-        height={300}
-        className="w-fit h-96 object-cover mx-auto rounded mb-4"
-      />
-      <p className="text-lg text-center mb-4">${product?.price.toFixed(2)}</p>
-      <button
-        onClick={() => {
-          addToCart(product!);
-          alert("Product added to cart successfully");
-        }}
-        className="text-white border  border-blue-400 p-3 bg-blue-500 hover:bg-blue-600 rounded-lg w-full text-center font-semibold mb-4 transition duration-300 ease-in-out"
-      >
-        Add to Cart
-      </button>
-      <p className="text-gray-700 mx-10 text-center mb-4">{product?.description}</p>
-      <p className="text-gray-500 text-sm text-center mx-10 mb-4">Category: {product?.category}</p>
-      <div className="text-gray-600 text-sm text-center mx-10 mb-4">
-        <span>Rating: {product?.rating.rate} / 5</span>
-        <span> ({product?.rating.count} reviews)</span>
+    <>
+      <div className="container mx-auto p-6 bg-gradient-to-r from-blue-50 to-indigo-50 min-h-screen flex flex-col items-center">
+        <h1 className="text-4xl font-extrabold text-indigo-700 mb-6 text-center">
+          {product?.title}
+        </h1>
+        <Image
+          src={product?.image ?? ""}
+          alt={product?.title ?? ""}
+          width={300}
+          height={300}
+          className="rounded-lg shadow-lg border border-gray-200 object-contain bg-white mb-6"
+        />
+        <p className="text-2xl font-semibold text-blue-600 mb-4">${product?.price.toFixed(2)}</p>
+        <button
+          onClick={handleAddToCart} 
+          className="bg-indigo-500 hover:bg-indigo-600 text-white px-6 py-3 rounded-lg font-bold shadow-md mb-6 transition duration-300"
+        >
+          Add to Cart
+        </button>
+        <p className="text-lg text-gray-700 leading-relaxed text-center max-w-2xl mb-6">
+          {product?.description}
+        </p>
+        <p className="text-sm text-gray-500 mb-4">Category: {product?.category}</p>
+        <div className="text-gray-600 text-sm mb-4">
+          <span className="font-medium">Rating: {product?.rating.rate} / 5</span>
+          <span className="ml-2">({product?.rating.count} reviews)</span>
+        </div>
       </div>
-    </div>
+
+     
+      <ToastContainer
+        position="top-center"  
+        autoClose={3000}  
+        hideProgressBar={false}
+        closeOnClick
+        pauseOnHover
+        draggable
+         
+      />
+    </>
   );
 }
