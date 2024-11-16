@@ -51,7 +51,7 @@ export default async function AuthButton() {
         <Button
           type="submit"
           variant="outline"
-          className="text-white hover:bg-white hover:text-black border-white transition duration-300"
+          className="text-black bg-white hover:bg-white hover:text-black border-white transition duration-300"
         >
           Sign out
         </Button>
@@ -63,7 +63,7 @@ export default async function AuthButton() {
         asChild
         size="sm"
         variant="outline"
-        className="text-black border-white hover:bg-white hover:text-black transition duration-300"
+        className="text-black bg-white border-white hover:bg-white hover:text-black transition duration-300"
       >
         <Link href="/sign-in">Sign in</Link>
       </Button>
