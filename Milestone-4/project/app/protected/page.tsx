@@ -1,3 +1,4 @@
+import PageHeader from "@/components/PageHeader";
 import FetchDataSteps from "@/components/tutorial/fetch-data-steps";
 import { createClient } from "@/utils/supabase/server";
 import { InfoIcon } from "lucide-react";
@@ -15,6 +16,8 @@ export default async function ProtectedPage() {
   }
 
   return (
+    <>
+    <PageHeader/>
     <div className="flex-1 w-full flex flex-col gap-12">
       <div className="w-full">
         <div className="bg-accent text-sm p-3 px-5 rounded-md text-foreground flex gap-3 items-center">
@@ -34,5 +37,6 @@ export default async function ProtectedPage() {
         <FetchDataSteps />
       </div>
     </div>
+    </>
   );
 }
