@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+ 
 
 
 interface Product {
@@ -66,6 +67,7 @@ function ProductCard({ product }: { product: Product }) {
 
   return (
     <div className="bg-white rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300 ease-in-out group">
+      <Link href={`./products/${product.id}`}>
       <div className="relative">
         <Image
           src={product.image}
@@ -88,6 +90,8 @@ function ProductCard({ product }: { product: Product }) {
             <span>&#9734;</span>
           </div>
         </div>
+        </div>
+        </Link>
         <Link
           href={`./products/${product.id}`}
           className="inline-block w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 px-6 text-center rounded-lg transition-transform duration-200 hover:scale-105"
@@ -95,6 +99,6 @@ function ProductCard({ product }: { product: Product }) {
           View Details
         </Link>
       </div>
-    </div>
+    
   );
 }

@@ -31,13 +31,13 @@ export default function Carddetails({ params: paramsPromise }: { params: Promise
   const [error, setError] = useState<string | null>(null);
   const { addToCart } = useCart();
 
-  // Unwrap `params` using React.use()
+  
   const params = React.use(paramsPromise);
 
   useEffect(() => {
     async function loadProduct() {
       try {
-        const data = await fetchProductById(params.id); // Access `id` here
+        const data = await fetchProductById(params.id);  
         setProduct(data);
       } catch (err) {
         setError("Failed to load product.");
