@@ -27,7 +27,7 @@ export default function Header() {
           htmlFor="menu-toggle"
           className="text-white text-4xl cursor-pointer md:hidden absolute right-6 top-6"
         >
-          &#9777;
+          &#9776;
         </label>
 
     
@@ -53,11 +53,6 @@ export default function Header() {
           
           <li className="md:ml-6 mt-2 md:mt-0 flex flex-col md:flex-row">
             <AuthButton />
-            <div className="md:hidden mt-2">
-              <form action={signOutAction} method="POST">
-                 
-              </form>
-            </div>
           </li>
         </ul>
       </nav>
