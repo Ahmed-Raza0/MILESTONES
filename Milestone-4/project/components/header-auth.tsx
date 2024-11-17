@@ -51,7 +51,7 @@ export default async function AuthButton() {
         <Button
           type="submit"
           variant="outline"
-          className="text-black bg-white hover:bg-white hover:text-black border-white transition duration-300"
+          className="text-black hover:text-gray-600 bg-white hover:bg-white border-white transition duration-300"
         >
           Sign out
         </Button>

@@ -29,20 +29,20 @@ export default async function Signup(props: { searchParams: Promise<Message> }) 
           </p>
 
           <div className="flex flex-col gap-6 mt-6">
-            {/* Email Field */}
+            
             <div>
               <Label htmlFor="email" className="text-lg font-medium text-gray-800">Email</Label>
               <Input
                 id="email"
                 name="email"
                 type="email"
-                placeholder="you@example.com"
+                placeholder="enter your email"
                 required
-                className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300"
+                className="w-full p-3 border bg-white border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300"
               />
             </div>
 
-            {/* Password Field */}
+            
             <div>
               <Label htmlFor="password" className="text-lg font-medium text-gray-800">Password</Label>
               <Input
@@ -52,11 +52,11 @@ export default async function Signup(props: { searchParams: Promise<Message> }) 
                 placeholder="Your password"
                 minLength={6}
                 required
-                className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300"
+                className="w-full p-3 border bg-white border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300"
               />
             </div>
 
-            {/* Submit Button */}
+            
             <div className="flex justify-center">
               <SubmitButton
                 formAction={signUpAction}
@@ -68,7 +68,7 @@ export default async function Signup(props: { searchParams: Promise<Message> }) 
             </div>
           </div>
 
-          {/* Form Message */}
+           
           <FormMessage message={searchParams} />
         </form>
       </div>

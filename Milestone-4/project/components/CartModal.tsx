@@ -15,6 +15,14 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose }) => {
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
       <div className="bg-white rounded-lg shadow-lg w-96 p-6 relative">
+        
+        <button
+          onClick={onClose}
+          className="absolute top-2 right-2 mr-4 text-black text-2xl font-semibold"
+        >
+          &times;
+        </button>
+
         <h2 className="text-2xl text-black font-semibold mb-4">Your Cart</h2>
         {cart.length === 0 ? (
           <p className="text-center text-black">Your cart is empty.</p>

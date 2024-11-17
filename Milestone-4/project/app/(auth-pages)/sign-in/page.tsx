@@ -26,9 +26,9 @@ export default async function Login(props: { searchParams: Promise<Message> }) {
               id="email"
               name="email"
               type="email"
-              placeholder="you@example.com"
+              placeholder="enter your email"
               required
-              className="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300"
+              className="w-full p-4 border bg-white border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300"
             />
           </div>
           
@@ -48,7 +48,7 @@ export default async function Login(props: { searchParams: Promise<Message> }) {
               type="password"
               placeholder="Your password"
               required
-              className="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300"
+              className="w-full p-4 border bg-white border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300"
             />
           </div>
 
