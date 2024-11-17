@@ -13,6 +13,8 @@ export default async function ProtectedPage() {
 
   if (!user) {
     return redirect("/sign-in");
+  }else{
+    return redirect("/products");
   }
 
   return (
